@@ -4,7 +4,7 @@ import { FiArrowUp, FiVolume2, FiVolumeX, FiChevronLeft, FiChevronRight } from '
 import { sendRSVP } from './firebase.js';
 
 const eventDate = new Date('2026-06-20T09:00:00');
-const musicUrl = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3';
+const musicUrl = 'https://d3e2rogs1zztlz.cloudfront.net/audio/music.mp3';
 const galleryPhotos = [
   'https://d3e2rogs1zztlz.cloudfront.net/images/img1.jpg',
   'https://d3e2rogs1zztlz.cloudfront.net/images/img2.jpg',
