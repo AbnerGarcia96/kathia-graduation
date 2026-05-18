@@ -10,7 +10,7 @@ import img6 from './assets/img/img6.jpg';
 import img7 from './assets/img/img7.jpg';
 
 const eventDate = new Date('2026-06-20T09:00:00');
-const musicUrl = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3';
+const musicUrl = 'https://cdn.jsdelivr.net/gh/AbnerGarcia96/kathia-graduation@main/public/audio/audio.mp3'//'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3';
 const galleryPhotos = [
   img1,//'https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?auto=format&fit=crop&w=1200&q=80',
   img2,//'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80',
