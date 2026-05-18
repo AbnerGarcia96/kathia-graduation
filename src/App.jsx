@@ -1,24 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
+import { FaGraduationCap, FaGlassCheers } from 'react-icons/fa';
+import { FiArrowUp, FiVolume2, FiVolumeX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { sendRSVP } from './firebase.js';
 
-import img1 from './assets/img/img1.jpg';
-import img2 from './assets/img/img2.jpg';
-import img3 from './assets/img/img3.jpg';
-import img4 from './assets/img/img4.jpg';
-import img5 from './assets/img/img5.jpg';
-import img6 from './assets/img/img6.jpg';
-import img7 from './assets/img/img7.jpg';
-
 const eventDate = new Date('2026-06-20T09:00:00');
-const musicUrl = 'https://cdn.jsdelivr.net/gh/AbnerGarcia96/kathia-graduation@main/public/audio/audio.mp3'//'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3';
+const musicUrl = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3';
 const galleryPhotos = [
-  img1,//'https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?auto=format&fit=crop&w=1200&q=80',
-  img2,//'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1200&q=80',
-  img3,//'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80'
-  img4,
-  img5,
-  img6,
-  img7
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img1.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img2.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img3.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img4.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img5.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img6.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img7.jpg'
 ];
 
 const timelineItems = [
@@ -26,31 +20,31 @@ const timelineItems = [
     year: '2009',
     title: 'Escuela Modelo',
     description: 'Mis primeros sueños nacieron entre cuadernos, amigos y grandes ilusiones.',
-    image: img1//'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80'
+    image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img1.jpg'
   },
   {
     year: '2016',
     title: 'Centro de Investigación e Innovación Educativa',
     description: 'Aquí crecieron mis metas, mi carácter y mis mejores recuerdos juveniles.',
-    image: img2//'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80'
+    image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img2.jpg'
   },
   {
     year: '2026',
     title: 'Universidad Nacional Autónoma de Honduras',
     description: 'La universidad transformó esfuerzo y sacrificio en conocimiento, vocación y futuro.',
-    image: img3//'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=800&q=80'
+    image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img3.jpg'
   }
 ];
 
 const eventDetails = [
   {
-    icon: '🎓',
+    icon: <FaGraduationCap className="text-cyan-500" />,
     title: 'Ceremonia',
     place: 'Polideportivo UNAH',
     date: eventDate
   },
   {
-    icon: '🥂',
+    icon: <FaGlassCheers className="text-cyan-500" />,
     title: 'Fiesta',
     place: 'Lugar X',
     date: new Date(eventDate.getTime() + 6 * 60 * 60 * 1000)
@@ -240,14 +234,14 @@ export default function App() {
           className={`fixed bottom-20 right-6 z-50 rounded-full bg-cyan-500 px-5 py-4 text-sm font-semibold text-slate-950 shadow-2xl transition duration-300 hover:bg-cyan-400 ${showBackToTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'}`}
           aria-label="Back to top"
         >
-          ⬆️
+          <FiArrowUp className="h-5 w-5" />
         </button>
         <button
           onClick={toggleMusic}
           className="fixed bottom-6 right-6 z-50 rounded-full bg-gray-500 px-5 py-4 text-sm font-semibold text-slate-950 shadow-2xl transition hover:bg-gray-400"
           aria-label={musicPlaying ? 'Pause background music' : 'Play background music'}
         >
-          {musicPlaying ? '🔊' : '🔇'}
+          {musicPlaying ? <FiVolume2 className="h-5 w-5" /> : <FiVolumeX className="h-5 w-5" />}
         </button>
 
         <div className="h-16" aria-hidden="true" />
@@ -324,11 +318,11 @@ export default function App() {
                   />
                 ))}
                 <div className="absolute inset-x-0 bottom-4 flex items-center justify-between px-4 z-20">
-                  <button onClick={prevSlide} className="rounded-full px-4 py-2 text-sm font-semibold ring-1 transition">
-                    &lt;
+                  <button onClick={prevSlide} className="rounded-full px-4 py-2 text-sm font-semibold ring-1 transition" aria-label="Previous slide">
+                    <FiChevronLeft className="h-5 w-5" />
                   </button>
-                  <button onClick={nextSlide} className="rounded-full px-4 py-2 text-sm font-semibold ring-1 transition">
-                    &gt;
+                  <button onClick={nextSlide} className="rounded-full px-4 py-2 text-sm font-semibold ring-1 transition" aria-label="Next slide">
+                    <FiChevronRight className="h-5 w-5" />
                   </button>
                 </div>
               </div>
