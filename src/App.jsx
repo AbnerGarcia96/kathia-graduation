@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaGraduationCap, FaGlassCheers } from 'react-icons/fa';
 import { FiArrowUp, FiVolume2, FiVolumeX, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
-import { sendRSVP } from './firebase.js';
 
 const eventDate = new Date('2026-06-20T09:00:00');
 const musicUrl = 'https://d3e2rogs1zztlz.cloudfront.net/audio/music.mp3';
