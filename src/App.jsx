@@ -64,7 +64,7 @@ export default function App() {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
-  const [attending, setAttending] = useState('yes');
+  const [attending, setAttending] = useState(true);
   const [status, setStatus] = useState('');
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -104,6 +104,23 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const sendRSVP = async (formData) => {
+    const response = await fetch('https://k3gqqptkf8.execute-api.us-east-1.amazonaws.com/api_prod/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.json().catch(() => ({}));
+      throw new Error(errorBody.message || 'Failed to save RSVP.');
+    }
+
+    return response.json();
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -115,13 +132,13 @@ export default function App() {
     setStatus('Sending...');
     try {
       await sendRSVP({ name: name.trim(), message: message.trim(), attending });
-      setStatus('Thank you! Your congratulations message was sent.');
+      setStatus('Thank you! Your RSVP has been saved.');
       setName('');
       setMessage('');
-      setAttending('yes');
+      setAttending(true);
     } catch (error) {
       console.error(error);
-      setStatus('Could not send RSVP yet. Please try again later.');
+      setStatus('Could not save RSVP yet. Please try again later.');
     }
   };
 
@@ -368,8 +385,8 @@ export default function App() {
                   onChange={(e) => setAttending(e.target.value)}
                   className="rounded-3xl border px-4 py-3 outline-none ring-1 transition"
                 >
-                  <option value="yes">Sí, allá nos vemos</option>
-                  <option value="no">No, no puedo asistir</option>
+                  <option value="true">Sí, allá nos vemos</option>
+                  <option value="false">No, no puedo asistir</option>
                 </select>
               </label>
               <button type="submit" className="inline-flex w-fit items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition">
