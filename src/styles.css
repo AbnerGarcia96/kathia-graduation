@@ -4,6 +4,9 @@
 
 :root {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --primary: #03045e;
+  --secondary: #0077b6;
+  --accent: #00b4d8;
 }
 
 * {
@@ -24,4 +27,27 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-15.68px) rotate(3.92deg);
+  }
+}
+
+@keyframes patternPulse {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+
+  45%,
+  55% {
+    opacity: 0.4;
+  }
 }
