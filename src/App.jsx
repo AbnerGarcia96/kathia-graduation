@@ -273,7 +273,13 @@ export default function App() {
 
   const handleNavClick = (id) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    if (!el) return;
+
+    const offset = 96;
+    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+
+    window.scrollTo({ top, behavior: 'smooth' });
   };
 
   const closeStatusDialog = () => {
