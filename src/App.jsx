@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { FaBriefcaseMedical, FaGraduationCap, FaGlassCheers, FaHospital, FaHospitalSymbol, FaMedkit, FaNotesMedical, FaPills } from 'react-icons/fa';
-import { FiAlertCircle, FiArrowUp, FiChevronLeft, FiChevronRight, FiFrown, FiInfo, FiLoader, FiVolume2, FiVolumeX } from 'react-icons/fi';
+import { FiAlertCircle, FiArrowUp, FiChevronLeft, FiChevronRight, FiFrown, FiInfo, FiLoader } from 'react-icons/fi';
 import { GiCaduceus } from "react-icons/gi";
+import { MdMusicNote, MdMusicOff } from 'react-icons/md';
 
 const eventDate = new Date('2026-06-20T14:00:00');
 const musicUrl = 'https://d3e2rogs1zztlz.cloudfront.net/audio/music.mp3';
+const backgroundImageURL = 'https://d3e2rogs1zztlz.cloudfront.net/images/background-dark.png';
 const galleryPhotos = [
   'https://d3e2rogs1zztlz.cloudfront.net/images/img1.jpg',
   'https://d3e2rogs1zztlz.cloudfront.net/images/img2.jpg',
@@ -66,7 +68,7 @@ const renderMedicalPattern = (seed = 0) => (
       return (
         <Icon
           key={`${seed}-${index}`}
-          className="absolute text-cyan-400/50"
+          className="absolute text-cyan-500/50"
           style={{
             left,
             top,
@@ -103,6 +105,7 @@ export default function App() {
   const [autoCloseProgress, setAutoCloseProgress] = useState(100);
   const [musicPlaying, setMusicPlaying] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isNavSticky, setIsNavSticky] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const audioRef = useRef(null);
 
@@ -249,6 +252,9 @@ export default function App() {
     const handleScroll = () => {
       const cover = document.getElementById('cover');
       if (!cover) return;
+
+      const isScrolled = window.scrollY > 40;
+      setIsNavSticky(isScrolled);
       setShowBackToTop(window.scrollY > cover.offsetHeight);
     };
 
@@ -260,6 +266,7 @@ export default function App() {
   const navItems = [
     { id: 'timeline', label: 'El camino' },
     { id: 'details', label: 'Detalles del evento' },
+    { id: 'live', label: 'En vivo' },
     { id: 'gallery', label: 'Fotos' },
     { id: 'rsvp', label: 'RSVP' }
   ];
@@ -285,12 +292,12 @@ export default function App() {
       <section
         id="cover"
         className="relative w-full min-h-screen bg-center bg-cover flex items-center"
-        style={{ backgroundImage: `url(${galleryPhotos[2]})` }}
+        style={{ backgroundImage: `url(${backgroundImageURL})` }}
       >
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="relative z-10 mx-auto max-w-6xl px-4 py-24 sm:py-32">
-          <div className="max-w-2xl text-slate-100">
-            <p className="inline-flex rounded-full border px-4 py-2 text-sm uppercase tracking-[0.25em]">
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl items-start justify-start px-4 py-24 sm:py-32">
+          <div className="max-w-2xl text-slate-100 text-left">
+            <p className="inline-flex rounded-full bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.25em]">
               Te invito a mi graduación
             </p>
             <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -307,26 +314,25 @@ export default function App() {
                 hour12: true,
               }).replace(/^./, (char) => char.toUpperCase())}
             </p>
-            <p className="mt-4 max-w-3xl text-slate-200">
+            <p className="mt-4 max-w-3xl">
               Acompáñennos en una celebración para conmemorar la graduación de la Dra. Kathia García.
             </p>
 
-            <div className="mt-8 w-full rounded-[28px] border p-6 shadow-xl">
-              <h2 className="text-2xl font-semibold">Cuenta regresiva</h2>
+            <div className="w-full">
               <div className="mt-6 grid gap-4 sm:grid-cols-4">
-                <div className="rounded-3xl p-5 text-center ring-1">
+                <div className="rounded-3xl text-white p-5 text-center bg-white/10">
                   <p className="text-4xl font-semibold">{countdown.days}</p>
                   <p className="mt-2 text-sm uppercase tracking-[0.2em]">Días</p>
                 </div>
-                <div className="rounded-3xl p-5 text-center ring-1">
+                <div className="rounded-3xl text-white p-5 text-center bg-white/10">
                   <p className="text-4xl font-semibold">{countdown.hours}</p>
                   <p className="mt-2 text-sm uppercase tracking-[0.2em]">Horas</p>
                 </div>
-                <div className="rounded-3xl p-5 text-center ring-1">
+                <div className="rounded-3xl text-white p-5 text-center bg-white/10">
                   <p className="text-4xl font-semibold">{countdown.minutes}</p>
                   <p className="mt-2 text-sm uppercase tracking-[0.2em]">Minutos</p>
                 </div>
-                <div className="rounded-3xl p-5 text-center ring-1">
+                <div className="rounded-3xl text-white p-5 text-center bg-white/10">
                   <p className="text-4xl font-semibold">{countdown.seconds}</p>
                   <p className="mt-2 text-sm uppercase tracking-[0.2em]">Segundos</p>
                 </div>
@@ -364,12 +370,13 @@ export default function App() {
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(224,242,254,0.25),_transparent_30%)]" />
         <div className="relative mx-auto max-w-6xl">
-        <nav className="fixed top-4 left-0 right-0 mx-auto max-w-6xl z-50 flex flex-wrap items-center justify-center gap-3 px-4 backdrop-blur-sm text-cyan-500">
+        <nav className={`fixed top-0 py-2 left-0 right-0 mx-auto z-50 flex flex-wrap items-center justify-center gap-3 px-4 backdrop-blur-sm text-white`}>
+
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className="rounded-full border px-4 py-2 text-sm font-medium transition"
+              className={`rounded-full border px-4 py-2 text-sm font-medium transition ${isNavSticky ? 'border border-cyan-500 bg-cyan-500' : 'border-white'}`}
             >
               {item.label}
             </button>
@@ -378,17 +385,17 @@ export default function App() {
         <audio ref={audioRef} src={musicUrl} type="audio/mp3" loop preload="auto" autoPlay />
         <button
           onClick={handleBackToTop}
-          className={`fixed bottom-20 right-6 z-50 rounded-full bg-cyan-500 px-5 py-4 text-sm font-semibold text-white shadow-2xl transition duration-300 hover:bg-cyan-400 ${showBackToTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+          className={`fixed bottom-20 right-6 z-50 rounded-full bg-gray-500 px-5 py-4 text-sm font-semibold text-white shadow-2xl transition duration-300 hover:bg-gray-400 ${showBackToTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'}`}
           aria-label="Back to top"
         >
           <FiArrowUp className="h-5 w-5" />
         </button>
         <button
           onClick={toggleMusic}
-          className="fixed bottom-6 right-6 z-50 rounded-full bg-gray-500 px-5 py-4 text-sm font-semibold text-white shadow-2xl transition hover:bg-gray-400"
+          className={`fixed bottom-6 right-6 z-50 rounded-full bg-cyan-500 px-5 py-4 text-sm font-semibold text-white shadow-2xl transition hover:bg-cyan-500 ${musicPlaying ? 'animate-pulse shadow-cyan-500/30' : ''}`}
           aria-label={musicPlaying ? 'Pause background music' : 'Play background music'}
         >
-          {musicPlaying ? <FiVolume2 className="h-5 w-5" /> : <FiVolumeX className="h-5 w-5" />}
+          {musicPlaying ? <MdMusicNote className="h-5 w-5" /> : <MdMusicOff className="h-5 w-5" />}
         </button>
 
         <div className="h-16" aria-hidden="true" />
@@ -446,7 +453,7 @@ export default function App() {
                       href={event.mapsUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center text-sm font-medium text-cyan-600 underline decoration-cyan-400/70 underline-offset-4 transition hover:text-cyan-500"
+                      className="inline-flex items-center text-sm font-medium text-cyan-500 underline decoration-cyan-500/70 underline-offset-4 transition hover:text-cyan-500"
                     >
                       Ver en Google Maps
                     </a>
@@ -561,7 +568,7 @@ export default function App() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="mx-auto inline-flex w-fit items-center justify-center rounded-full bg-cyan-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-cyan-400 disabled:cursor-not-allowed disabled:bg-cyan-400"
+                  className="mx-auto inline-flex w-fit items-center justify-center rounded-full bg-cyan-500 px-6 py-3 text-sm font-semibold text-white transition hover:bg-cyan-500 disabled:cursor-not-allowed disabled:bg-cyan-500"
                 >
                   {isSubmitting ? (
                     <span className="inline-flex items-center gap-2">
