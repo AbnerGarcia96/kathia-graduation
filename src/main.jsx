@@ -4,7 +4,8 @@ import App from './App.jsx';
 import Admin from './Admin.jsx';
 import './styles.css';
 
-const pathname = window.location.pathname;
+const pathname = window.location.pathname.replace(/\/$/, '');
+
 const RootComponent = pathname === '/admin' ? Admin : App;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
