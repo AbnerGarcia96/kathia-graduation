@@ -13,7 +13,13 @@ const galleryPhotos = [
   'https://d3e2rogs1zztlz.cloudfront.net/images/img4.jpg',
   'https://d3e2rogs1zztlz.cloudfront.net/images/img5.jpg',
   'https://d3e2rogs1zztlz.cloudfront.net/images/img6.jpg',
-  'https://d3e2rogs1zztlz.cloudfront.net/images/img7.jpg'
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img7.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img8.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img9.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img10.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img11.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img12.jpg',
+  'https://d3e2rogs1zztlz.cloudfront.net/images/img13.jpg'
 ];
 
 const timelineItems = [
@@ -21,19 +27,22 @@ const timelineItems = [
     year: '2009',
     title: 'Escuela Modelo',
     description: 'Mis primeros sueños nacieron entre cuadernos, amigos y grandes ilusiones.',
-    image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img1.jpg'
+    image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img8.jpg',
+    alignment: '[5%_25%]'
   },
   {
     year: '2016',
     title: 'Centro de Investigación e Innovación Educativa',
     description: 'Aquí crecieron mis metas, mi carácter y mis mejores recuerdos juveniles.',
-    image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img2.jpg'
+    image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img13.jpg',
+    alignment: '[5%_25%]'
   },
   {
     year: '2026',
     title: 'Universidad Nacional Autónoma de Honduras',
     description: 'La universidad transformó esfuerzo y sacrificio en conocimiento, vocación y futuro.',
-    image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img3.jpg'
+    image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img3.jpg',
+    alignment: 'center'
   }
 ];
 
@@ -415,7 +424,7 @@ export default function App() {
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {timelineItems.map((item) => (
                 <article key={item.year} className="overflow-hidden rounded-3xl border">
-                  <img src={item.image} alt={item.title} className="h-44 w-full object-cover" />
+                  <img src={item.image} alt={item.title} className={`h-44 w-full object-cover object-${item.alignment}`} />
                   <div className="space-y-3 p-5">
                     <p className="text-xs uppercase tracking-[0.28em]">{item.year}</p>
                     <h3 className="text-xl font-semibold">{item.title}</h3>
