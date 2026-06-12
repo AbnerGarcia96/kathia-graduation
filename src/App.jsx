@@ -8,7 +8,6 @@ const eventDate = new Date('2026-06-20T14:00:00');
 const musicUrl = 'https://d3e2rogs1zztlz.cloudfront.net/audio/music.mp3';
 const galleryPhotos = [
   'https://d3e2rogs1zztlz.cloudfront.net/images/img1.jpg',
-  'https://d3e2rogs1zztlz.cloudfront.net/images/img2.jpg',
   'https://d3e2rogs1zztlz.cloudfront.net/images/img3.jpg',
   'https://d3e2rogs1zztlz.cloudfront.net/images/img4.jpg',
   'https://d3e2rogs1zztlz.cloudfront.net/images/img5.jpg',
