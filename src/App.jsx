@@ -56,10 +56,10 @@ const eventDetails = [
   },
   {
     icon: <FaGlassCheers className="text-cyan-500" />,
-    title: 'Fiesta',
+    title: 'Reservación',
     place: 'Restaurante NiFu NiFa, Tegucigalpa',
     mapsUrl: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('Restaurante NiFu NiFa Tegucigalpa Honduras'),
-    date: new Date(eventDate.getTime() + 6 * 60 * 60 * 1000)
+    date: new Date(eventDate.getTime() + 4 * 60 * 60 * 1000)
   }
 ];
 
@@ -446,7 +446,7 @@ export default function App() {
               <div className="mt-8 grid gap-6 xl:grid-cols-2">
                 {eventDetails.map((event) => (
                   <div key={event.title} className="rounded-3xl border p-6">
-                    <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl text-3xl ring-1">
+                    <div className="mb-3 inline-flex h-15 w-15 items-center justify-center rounded-2xl text-3xl">
                       {event.icon}
                     </div>
                     <h3 className="text-2xl font-semibold">{event.title}</h3>
