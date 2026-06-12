@@ -6,7 +6,6 @@ import { MdMusicNote, MdMusicOff } from 'react-icons/md';
 
 const eventDate = new Date('2026-06-20T14:00:00');
 const musicUrl = 'https://d3e2rogs1zztlz.cloudfront.net/audio/music.mp3';
-const backgroundImageURL = 'https://d3e2rogs1zztlz.cloudfront.net/images/background-dark.png';
 const galleryPhotos = [
   'https://d3e2rogs1zztlz.cloudfront.net/images/img1.jpg',
   'https://d3e2rogs1zztlz.cloudfront.net/images/img2.jpg',
@@ -297,8 +296,7 @@ export default function App() {
     <div className="min-h-screen">
       <section
         id="cover"
-        className="relative w-full min-h-screen bg-center bg-cover flex items-center"
-        style={{ backgroundImage: `url(${backgroundImageURL})` }}
+        className={`bg-[url(https://d3e2rogs1zztlz.cloudfront.net/images/background-dark.png)] relative w-full min-h-screen bg-[position:90%_center] lg:bg-center bg-cover flex items-center`}
       >
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 mx-auto flex w-full max-w-6xl items-start justify-start px-4 py-24 sm:py-32">
