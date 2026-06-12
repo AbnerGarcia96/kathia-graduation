@@ -123,7 +123,7 @@ export default function Admin() {
           throw new Error('Unable to load messages.');
         }
 
-        const data = await response.json();
+        const data = await response.json(); // [{name: "Doña Telma Ferrufino y familia confirma su asistencia .", message: "Felicidades ⭐️⭐️⭐️⭐️⭐️", attending: true},{name: "Doña Telma Ferrufino y familia confirma su asistencia .", message: "Felicidades ⭐️⭐️⭐️⭐️⭐️", attending: true}];
         const nextMessages = Array.isArray(data)
           ? data
           : Array.isArray(data?.messages)
@@ -156,10 +156,9 @@ export default function Admin() {
         </div> : ''}
 
         {adminAuthenticated ? (
-          <div className="mt-6 grid gap-6 xl:grid-cols-[320px_1fr]">
-            <section className="rounded-3xl border border-cyan-100 bg-cyan-50 p-6 text-slate-900 shadow-sm">
-              <h2 className="text-xl font-semibold text-cyan-800 sm:text-2xl">Bienvenida</h2>
-              <p className="mt-3 text-sm text-slate-600 sm:text-base">Credenciales correctas</p>
+          <div className="mx-auto w-full">
+            <section className="rounded-3xl item-center border border-cyan-100 bg-cyan-50 p-6 text-slate-900 shadow-sm mb-5">
+              <h2 className="text-xl font-semibold text-cyan-800 sm:text-2xl">Bombona :)</h2>
 
               <div className="mt-5 rounded-2xl bg-white/90 p-4 shadow-sm">
                 <p className="text-xs uppercase tracking-[0.25em] text-cyan-700">Asistencia confirmada</p>
