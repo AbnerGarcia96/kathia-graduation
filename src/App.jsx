@@ -28,21 +28,21 @@ const timelineItems = [
     title: 'Escuela Modelo',
     description: 'Mis primeros sueños nacieron entre cuadernos, amigos y grandes ilusiones.',
     image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img8.jpg',
-    alignment: '[5%_25%]'
+    alignment: 'object-[0%_20%] md:object-[5%_25%]'
   },
   {
     year: '2016',
     title: 'Centro de Investigación e Innovación Educativa',
     description: 'Aquí crecieron mis metas, mi carácter y mis mejores recuerdos juveniles.',
     image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img13.jpg',
-    alignment: '[5%_25%]'
+    alignment: 'object-[-5%_15%] md:object-[5%_25%]'
   },
   {
     year: '2026',
     title: 'Universidad Nacional Autónoma de Honduras',
     description: 'La universidad transformó esfuerzo y sacrificio en conocimiento, vocación y futuro.',
     image: 'https://d3e2rogs1zztlz.cloudfront.net/images/img3.jpg',
-    alignment: 'center'
+    alignment: 'object-center md:object-center'
   }
 ];
 
@@ -424,7 +424,7 @@ export default function App() {
             <div className="mt-8 grid gap-6 md:grid-cols-3">
               {timelineItems.map((item) => (
                 <article key={item.year} className="overflow-hidden rounded-3xl border">
-                  <img src={item.image} alt={item.title} className={`h-44 w-full object-cover object-${item.alignment}`} />
+                  <img src={item.image} alt={item.title} className={`h-44 w-full object-cover ${item.alignment}`} />
                   <div className="space-y-3 p-5">
                     <p className="text-xs uppercase tracking-[0.28em]">{item.year}</p>
                     <h3 className="text-xl font-semibold">{item.title}</h3>
