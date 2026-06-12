@@ -117,13 +117,13 @@ export default function Admin() {
       setMessagesError('');
 
       try {
-        // const response = await fetch(MESSAGES_ENDPOINT);
+        const response = await fetch(MESSAGES_ENDPOINT);
 
-        // if (!response.ok) {
-        //   throw new Error('Unable to load messages.');
-        // }
+        if (!response.ok) {
+          throw new Error('Unable to load messages.');
+        }
 
-        const data = [{name: "Doña Telma Ferrufino y familia confirma su asistencia .", message: "Felicidades ⭐️⭐️⭐️⭐️⭐️", attending: true},{name: "Doña Telma Ferrufino y familia confirma su asistencia .", message: "Felicidades ⭐️⭐️⭐️⭐️⭐️", attending: true}];// await response.json();
+        const data = await response.json(); // [{name: "Doña Telma Ferrufino y familia confirma su asistencia .", message: "Felicidades ⭐️⭐️⭐️⭐️⭐️", attending: true},{name: "Doña Telma Ferrufino y familia confirma su asistencia .", message: "Felicidades ⭐️⭐️⭐️⭐️⭐️", attending: true}];
         const nextMessages = Array.isArray(data)
           ? data
           : Array.isArray(data?.messages)
