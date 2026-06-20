@@ -486,7 +486,7 @@ export default function App() {
               <div className="mt-8 overflow-hidden rounded-[28px] border bg-slate-950/95 shadow-inner">
                 <div className="aspect-video w-full">
                   <iframe
-                    src="https://www.youtube.com/embed/bJhjhx0jsqQ?si=822qeQ9Tjx0vXxT1"
+                    src="https://www.youtube.com/embed/kRKza10FoFI?si=5257MjwR0tIoDcUk"
                     title="YouTube live stream"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
